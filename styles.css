@@ -234,3 +234,42 @@ p {
   animation: fadeInTop 1s ease-in forwards;
   opacity: 0;
 }
+.glow-ring {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  z-index: 1;
+  animation: flame 1.5s infinite ease-in-out;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.4), transparent);
+  box-shadow:
+    0 0 20px rgba(255, 69, 0, 0.7),
+    0 0 40px rgba(255, 140, 0, 0.6),
+    0 0 60px rgba(255, 69, 0, 0.5);
+}
+
+@keyframes flame {
+  0% {
+    box-shadow:
+      0 0 20px rgba(255, 69, 0, 0.7),
+      0 0 40px rgba(255, 140, 0, 0.6),
+      0 0 60px rgba(255, 69, 0, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 99, 71, 0.9),
+      0 0 60px rgba(255, 140, 0, 0.8),
+      0 0 90px rgba(255, 69, 0, 0.7);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(255, 69, 0, 0.7),
+      0 0 40px rgba(255, 140, 0, 0.6),
+      0 0 60px rgba(255, 69, 0, 0.5);
+    transform: scale(1);
+  }
+}
