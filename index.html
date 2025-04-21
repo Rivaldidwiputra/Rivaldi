@@ -4,48 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rivaldi Dwi Putra</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0f;
+      color: white;
     }
+
     .profile-wrapper {
       position: relative;
       width: 250px;
       height: 250px;
       margin-bottom: 30px;
     }
+
     .profile-picture {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      position: relative;
-      z-index: 2;
       border: 4px solid #1e90ff;
-    }
-    .glow-ring {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 270px;
-      height: 270px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff, #00bfff, #1e90ff);
-      animation: rotate 3s linear infinite;
-      z-index: 1;
-      filter: blur(4px);
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      position: relative;
+      z-index: 3;
     }
 
-    /* Music Player */
+    /* LED Ring Effect */
+    .glow-ring {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,191,255,0.4) 0%, rgba(0,191,255,0.05) 70%);
+      filter: blur(8px);
+      z-index: 1;
+      animation: pulse 1.5s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* Waveform */
+    .waveform {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: -25px;
+      left: -25px;
+      z-index: 0;
+      opacity: 0.7;
+      animation: waveRotate 8s linear infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes waveRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .waveform path {
+      fill: none;
+      stroke: #00bfff;
+      stroke-width: 2;
+      stroke-dasharray: 4;
+      animation: dash 1.5s linear infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -20; }
+    }
+
     .music-player {
       position: fixed;
       bottom: 30px;
@@ -55,8 +91,8 @@
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
       z-index: 999;
-      transition: background 0.3s ease;
     }
+
     .music-player button {
       background: none;
       border: none;
@@ -67,15 +103,14 @@
       align-items: center;
       gap: 6px;
     }
-    .music-player button:hover {
-      color: #1e90ff;
-    }
+
     .equalizer {
       display: inline-flex;
       gap: 2px;
       height: 20px;
       align-items: flex-end;
     }
+
     .equalizer span {
       width: 3px;
       height: 100%;
@@ -83,113 +118,27 @@
       animation: bounce 1s infinite ease-in-out;
       display: inline-block;
     }
+
     .equalizer span:nth-child(1) { animation-delay: 0s; }
     .equalizer span:nth-child(2) { animation-delay: 0.2s; }
     .equalizer span:nth-child(3) { animation-delay: 0.4s; }
     .equalizer span:nth-child(4) { animation-delay: 0.6s; }
     .equalizer span:nth-child(5) { animation-delay: 0.8s; }
+
     @keyframes bounce {
       0%, 100% { height: 5px; }
       50% { height: 20px; }
     }
-
-    /* Resume Preview */
-    #resume-preview {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background-color: rgba(10, 10, 20, 0.95); /* background gelap transparan */
-      z-index: 1000;
-    }
-
-    #resume-preview button {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      background: none;
-      border: none;
-      z-index: 1001;
-      cursor: pointer;
-    }
-
-    .resume-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .resume-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      z-index: 1000;
-      position: relative;
-    }
-
-    .no-download-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1001;
-      background-color: transparent; /* Tidak blur, tetap terlihat */
-    }
   </style>
 </head>
 <body>
-  <!-- Header Section -->
-  <header id="header">
-    <div class="left-section">
-      <a class="logo" href="#">LAVIR</a>
-    </div>
-    <nav>
-      <a class="nav-item active" href="#hero">Home</a>
-      <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
-      <a class="nav-item" href="#">Projects</a>
-      <a class="nav-item" href="#about">About</a>
-    </nav>
-  </header>
-
-  <!-- Resume Preview -->
-  <div id="resume-preview">
-    <button onclick="toggleResume()">&times;</button>
-    <div class="resume-container">
-      <iframe 
-        src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" 
-        allow="autoplay">
-      </iframe>
-      <div class="no-download-overlay"></div>
-    </div>
+  <div class="profile-wrapper">
+    <div class="glow-ring" id="ledEffect"></div>
+    <svg class="waveform" id="waveform" viewBox="0 0 100 100">
+      <path d="M10,50 Q25,20 40,50 T70,50 T100,50" />
+    </svg>
+    <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
   </div>
-
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-left">
-      <div class="content">
-        <div class="profile-wrapper">
-          <div class="glow-ring"></div>
-          <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
-        </div>
-        <h1>Hi, I'm Rivaldi Dwi Putra</h1>
-        <h3>Sales Executive<br />AI Content Creator</h3>
-        <p id="about">
-          I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
-        </p>
-        <div class="cta">
-          <button class="cta-1">Hire Me</button>
-          <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
-        </div>
-        <div class="social-icon">
-          <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-right"></div>
-  </section>
 
   <!-- Music Player -->
   <div class="music-player">
@@ -202,31 +151,14 @@
     </button>
   </div>
 
-  <!-- Scripts -->
   <script>
-    function toggleResume() {
-      const resume = document.getElementById("resume-preview");
-      if (resume.style.display === "none" || resume.style.display === "") {
-        resume.style.display = "block";
-        resume.style.opacity = 0;
-        setTimeout(() => { resume.style.opacity = 1 }, 10);
-      } else {
-        resume.style.opacity = 0;
-        setTimeout(() => { resume.style.display = "none" }, 300);
-      }
-    }
-
-    document.addEventListener('contextmenu', function (e) {
-      const preview = document.getElementById("resume-preview");
-      if (preview.style.display === "block") {
-        e.preventDefault();
-      }
-    });
-
     const audio = document.getElementById("audio");
     const playPauseBtn = document.getElementById("playPauseBtn");
     const icon = playPauseBtn.querySelector("i");
     const equalizer = document.getElementById("equalizer");
+    const glowRing = document.getElementById("ledEffect");
+    const waveform = document.getElementById("waveform");
+    const wavePath = waveform.querySelector("path");
 
     playPauseBtn.addEventListener("click", () => {
       if (audio.paused) {
@@ -234,26 +166,18 @@
         icon.classList.remove("fa-play");
         icon.classList.add("fa-pause");
         equalizer.style.display = "inline-flex";
+        glowRing.style.animationPlayState = "running";
+        waveform.style.animationPlayState = "running";
+        wavePath.style.animationPlayState = "running";
       } else {
         audio.pause();
         icon.classList.remove("fa-pause");
         icon.classList.add("fa-play");
         equalizer.style.display = "none";
+        glowRing.style.animationPlayState = "paused";
+        waveform.style.animationPlayState = "paused";
+        wavePath.style.animationPlayState = "paused";
       }
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const unlockAudio = () => {
-        audio.muted = false;
-        audio.play();
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-        equalizer.style.display = "inline-flex";
-        document.removeEventListener("click", unlockAudio);
-        document.removeEventListener("scroll", unlockAudio);
-      };
-      document.addEventListener("click", unlockAudio);
-      document.addEventListener("scroll", unlockAudio);
     });
   </script>
 </body>
