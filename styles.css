@@ -241,3 +241,23 @@ button {
 body {
   animation: backgroundZoom 3s ease-in forwards;
 }
+.cta .cta-2 {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 15px 0;
+  border-radius: 8px;
+  margin-right: 50px;
+  background-color: transparent;
+  color: #3FA2F6;
+  border: 2px solid #3FA2F6;
+  transition: background-color 0.12s, color 0.21s, padding 0.12s;
+  margin-bottom: 180px;
+}
+
+.cta .cta-2:hover {
+  background-color: #3FA2F6;
+  color: black;
+}
