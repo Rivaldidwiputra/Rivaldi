@@ -116,8 +116,8 @@ p {
 .cta .cta-2 {
   background-color: transparent;
   color: #3FA2F6;
-  border: 2px solid #3FA2F6;
-  padding: 13px 0;
+  border: none solid #3FA2F6;
+  padding: 10px 20px;
 }
 
 /* Icons */
