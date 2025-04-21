@@ -1,91 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rivaldi Dwi Putra</title>
 
-  <!-- googlefonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-
-  <!-- header section -->
+  <!-- Header Section -->
   <header id="header">
-  <div class="left-section">
-    <a class="logo" href="#">LAVIR</a>
-  </div>
-  <nav>
-    <a class="nav-item active" href="#Hero">Home</a>
-    <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
-    <a class="nav-item" href="#">Projects</a>
-    <a class="nav-item" href="#">About</a>
-  </nav>
-</header>
-
-<!-- Resume Preview (Initially Hidden) -->
-<div id="resume-preview" style="display:none; padding: 20px;">
-  <h2>My Resume</h2>
-  <a href="resume.pdf" download class="cta-1" style="margin-bottom: 10px; display: inline-block;">Download Resume</a>
-  <iframe src="Rivaldi Dwi Putra_April20-075631PM.pdf" width="100%" height="600px" style="margin-top: 10px; border: 1px solid #ccc; border-radius: 8px;"></iframe>
-</div>
-
-<!-- Toggle Script -->
-<script>
-  function toggleResume() {
-    const preview = document.getElementById("resume-preview");
-    preview.style.display = (preview.style.display === "none") ? "block" : "none";
-  }
-</script>
-
+    <div class="left-section">
+      <a class="logo" href="#">LAVIR</a>
+    </div>
+    <nav>
+      <a class="nav-item active" href="#hero">Home</a>
+      <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
+      <a class="nav-item" href="#">Projects</a>
+      <a class="nav-item" href="#">About</a>
+    </nav>
   </header>
 
-  <!-- Hero section -->
+  <!-- Resume Preview -->
+  <div id="resume-preview" style="display:none; padding: 20px;">
+    <h2>My Resume</h2>
+    <a href="resume.pdf" download class="cta-1" style="margin-bottom: 10px; display: inline-block;">Download Resume</a>
+    <iframe src="Rivaldi Dwi Putra_April20-075631PM.pdf" width="100%" height="600px" style="margin-top: 10px; border: 1px solid #ccc; border-radius: 8px;"></iframe>
+  </div>
+
+  <!-- Hero Section -->
   <section id="hero">
     <div class="hero-left">
       <div class="content">
-
         <h1>Hi, I'm Rivaldi Dwi Putra</h1>
-        <h3>
-Sales Executive                              
-AI Content Creator 
-<h3>
+        <h3>Sales Executive<br />AI Content Creator</h3>
         <p>
           I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
         </p>
 
         <div class="cta">
-  <button class="cta-1">Hire Me</button>
-  <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
-
-</div>
-
+          <button class="cta-1">Hire Me</button>
+          <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+        </div>
 
         <div class="social-icon">
-  <i class="fa-brands fa-instagram"></i>
-  <i class="fa-brands fa-linkedin-in"></i>
-  <i class="fa-brands fa-x-twitter"></i>
-  <i class="fa-brands fa-youtube"></i>
-  <i class="fa-brands fa-tiktok"></i>
-</div>
-
+          <a href="https://instagram.com/USERNAME" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/USERNAME" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
       </div>
     </div>
     <div class="hero-right"></div>
   </section>
-<!-- Lavir 2025 -->
-</body>
 
+  <!-- Script -->
+  <script>
+    function toggleResume() {
+      const preview = document.getElementById("resume-preview");
+      preview.style.display = (preview.style.display === "none") ? "block" : "none";
+    }
+  </script>
+</body>
 </html>
