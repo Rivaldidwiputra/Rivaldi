@@ -98,19 +98,6 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0); }
     }
-
-    .audio-toggle-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-      padding: 10px 15px;
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
   </style>
 </head>
 
@@ -171,29 +158,11 @@
     </div>
   </section>
 
-  <!-- One Piece Music -->
-  <audio id="onePieceAudio" autoplay loop>
-    <source src="https://vgmsite.com/soundtracks/one-piece-opening/Galley-La%20Company%20Theme.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Toggle Audio Button -->
-  <button class="audio-toggle-btn" onclick="toggleAudio()">Toggle Sound</button>
-
   <!-- Script -->
   <script>
     function toggleResume() {
       const preview = document.getElementById("resume-preview");
       preview.style.display = (preview.style.display === "none") ? "block" : "none";
-    }
-
-    function toggleAudio() {
-      const audio = document.getElementById("onePieceAudio");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
     }
   </script>
 </body>
