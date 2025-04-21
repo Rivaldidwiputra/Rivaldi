@@ -20,6 +20,17 @@
       scroll-behavior: smooth;
     }
 
+    body {
+      background: url('https://i.ibb.co/0FGgB8V/onepiece-clouds-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    h1, h3, p {
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+
     .profile-wrapper {
       position: relative;
       width: 250px;
@@ -64,6 +75,41 @@
       100% {
         transform: rotate(360deg);
       }
+    }
+
+    .hero-right {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: transparent;
+    }
+
+    .luffy-gif {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 250px;
+      z-index: 0;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .audio-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      padding: 10px 15px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -119,14 +165,35 @@
         </div>
       </div>
     </div>
-    <div class="hero-right"></div>
+    <div class="hero-right">
+      <!-- Luffy One Piece Animation -->
+      <img src="https://media.tenor.com/ZfA9Qqf7hzEAAAAC/luffy-one-piece.gif" alt="Luffy" class="luffy-gif" />
+    </div>
   </section>
+
+  <!-- One Piece Music -->
+  <audio id="onePieceAudio" autoplay loop>
+    <source src="https://vgmsite.com/soundtracks/one-piece-opening/Galley-La%20Company%20Theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Toggle Audio Button -->
+  <button class="audio-toggle-btn" onclick="toggleAudio()">Toggle Sound</button>
 
   <!-- Script -->
   <script>
     function toggleResume() {
       const preview = document.getElementById("resume-preview");
       preview.style.display = (preview.style.display === "none") ? "block" : "none";
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById("onePieceAudio");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
   </script>
 </body>
