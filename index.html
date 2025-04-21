@@ -24,16 +24,31 @@
 
   <!-- header section -->
   <header id="header">
-    <div class="left-section">
-      <a class="logo" href="#">LAVIR</a>
-    </div>
+  <div class="left-section">
+    <a class="logo" href="#">LAVIR</a>
+  </div>
+  <nav>
+    <a class="nav-item active" href="#">Home</a>
+    <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
+    <a class="nav-item" href="#">Projects</a>
+    <a class="nav-item" href="#">About</a>
+  </nav>
+</header>
 
-    <nav>
-      <a class="nav-item active" href="#">Home</a>
-      <a class="nav-item" href="#Rivaldi Dwi Putra_April20-075631PM.pdf">Resume</a>
-      <a class="nav-item" href="#">Projects</a>
-      <a class="nav-item" href="#">About</a>
-    </nav>
+<!-- Resume Preview (Initially Hidden) -->
+<div id="resume-preview" style="display:none; padding: 20px;">
+  <h2>My Resume</h2>
+  <a href="resume.pdf" download class="cta-1" style="margin-bottom: 10px; display: inline-block;">Download Resume</a>
+  <iframe src="resume.pdf" width="100%" height="600px" style="margin-top: 10px; border: 1px solid #ccc; border-radius: 8px;"></iframe>
+</div>
+
+<!-- Toggle Script -->
+<script>
+  function toggleResume() {
+    const preview = document.getElementById("resume-preview");
+    preview.style.display = (preview.style.display === "none") ? "block" : "none";
+  }
+</script>
 
   </header>
 
