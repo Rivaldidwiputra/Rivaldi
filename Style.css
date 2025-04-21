@@ -1,32 +1,60 @@
-/* Global Styles */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0d1117;
+  color: #f0f0f0;
   line-height: 1.6;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
   padding: 20px;
 }
 
 header {
   text-align: center;
-  padding: 40px 20px;
-  background-color: #1f2937;
-  color: #fff;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  border-bottom: 1px solid #2d3748;
 }
 
-header h1 {
+h1 {
+  font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  color: #00f0ff;
 }
 
-header p {
-  font-size: 1.1rem;
-  margin: 4px 0;
+.tagline {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #a5f3fc;
+}
+
+.section {
+  margin: 40px 0;
+  background-color: #111827;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.1);
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #38bdf8;
+  border-bottom: 1px solid #3b82f6;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #7dd3fc;
+  margin-top: 20px;
 }
 
 a {
-  color: #3b82f6;
+  color: #0ea5e9;
   text-decoration: none;
 }
 
@@ -34,56 +62,30 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Section Styling */
-section {
-  margin: 40px auto;
-  max-width: 800px;
-  padding: 0 20px;
-}
-
-section h2 {
-  font-size: 2rem;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-section h3 {
-  font-size: 1.3rem;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
 ul {
   padding-left: 20px;
 }
 
-ul ul {
-  padding-left: 20px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+.glow-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #0ea5e9;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: box-shadow 0.3s ease;
+  text-decoration: none;
 }
 
-li {
-  margin-bottom: 8px;
+.glow-button:hover {
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
 }
 
-/* Footer Styling */
 footer {
   text-align: center;
-  padding: 30px;
-  background-color: #1f2937;
-  color: #fff;
   margin-top: 60px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 0 15px;
-  }
+  padding: 20px;
+  border-top: 1px solid #2d3748;
+  color: #94a3b8;
 }
