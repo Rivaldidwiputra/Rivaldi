@@ -299,3 +299,30 @@ p {
 .music-player button:hover {
   color: #1e90ff;
 }
+.logo {
+  font-family: 'Pirata One', cursive;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 215, 0, 0.6);
+  letter-spacing: 2px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+nav a.nav-item {
+  font-family: 'Pirata One', cursive;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  margin-left: 16px;
+  transition: color 0.3s ease;
+}
+
+nav a.nav-item:hover {
+  color: #ffd700;
+}
