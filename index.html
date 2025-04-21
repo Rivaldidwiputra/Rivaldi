@@ -4,54 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rivaldi Dwi Putra</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0a0f;
-      color: white;
-    }
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
 
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #0e0e1a;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #00bfff; text-decoration: none; }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav .active { color: #00bfff; }
+
+    /* HERO SECTION */
+    #hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to right, #0e0e1a, #1e1e2f);
+      color: white;
+      padding: 40px;
+    }
+    .hero-left .content {
+      max-width: 600px;
+    }
     .profile-wrapper {
       position: relative;
       width: 250px;
       height: 250px;
       margin-bottom: 30px;
     }
-
     .profile-picture {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #1e90ff;
       position: relative;
-      z-index: 3;
+      z-index: 2;
+      border: 4px solid #1e90ff;
     }
-
-    /* LED Ring Effect */
     .glow-ring {
       position: absolute;
-      top: -15px;
-      left: -15px;
-      width: 280px;
-      height: 280px;
+      top: -10px;
+      left: -10px;
+      width: 270px;
+      height: 270px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,191,255,0.4) 0%, rgba(0,191,255,0.05) 70%);
-      filter: blur(8px);
+      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff);
+      animation: rotate 3s linear infinite;
       z-index: 1;
-      animation: pulse 1.5s ease-in-out infinite;
+      filter: blur(4px);
       animation-play-state: paused;
     }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.2); opacity: 1; }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /* Waveform */
     .waveform {
       position: absolute;
       width: 300px;
@@ -59,14 +85,9 @@
       top: -25px;
       left: -25px;
       z-index: 0;
-      opacity: 0.7;
+      opacity: 0.6;
       animation: waveRotate 8s linear infinite;
       animation-play-state: paused;
-    }
-
-    @keyframes waveRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     .waveform path {
@@ -78,10 +99,40 @@
       animation-play-state: paused;
     }
 
+    @keyframes waveRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     @keyframes dash {
       to { stroke-dashoffset: -20; }
     }
 
+    .cta {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .cta-1, .cta-2 {
+      padding: 10px 20px;
+      border: none;
+      background: #00bfff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .social-icon {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+    .social-icon a {
+      color: #00bfff;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+
+    /* MUSIC PLAYER */
     .music-player {
       position: fixed;
       bottom: 30px;
@@ -92,7 +143,6 @@
       box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
       z-index: 999;
     }
-
     .music-player button {
       background: none;
       border: none;
@@ -103,42 +153,105 @@
       align-items: center;
       gap: 6px;
     }
-
     .equalizer {
       display: inline-flex;
       gap: 2px;
       height: 20px;
       align-items: flex-end;
     }
-
     .equalizer span {
       width: 3px;
       height: 100%;
       background: #00bfff;
       animation: bounce 1s infinite ease-in-out;
-      display: inline-block;
     }
-
     .equalizer span:nth-child(1) { animation-delay: 0s; }
     .equalizer span:nth-child(2) { animation-delay: 0.2s; }
     .equalizer span:nth-child(3) { animation-delay: 0.4s; }
     .equalizer span:nth-child(4) { animation-delay: 0.6s; }
     .equalizer span:nth-child(5) { animation-delay: 0.8s; }
-
     @keyframes bounce {
       0%, 100% { height: 5px; }
       50% { height: 20px; }
     }
+
+    /* RESUME MODAL */
+    #resume-preview {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 20, 0.95);
+      z-index: 1000;
+    }
+    #resume-preview button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      z-index: 1001;
+      cursor: pointer;
+    }
+    .resume-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
-  <div class="profile-wrapper">
-    <div class="glow-ring" id="ledEffect"></div>
-    <svg class="waveform" id="waveform" viewBox="0 0 100 100">
-      <path d="M10,50 Q25,20 40,50 T70,50 T100,50" />
-    </svg>
-    <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+  <!-- Header -->
+  <header>
+    <a class="logo" href="#">LAVIR</a>
+    <nav>
+      <a class="nav-item active" href="#hero">Home</a>
+      <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
+      <a class="nav-item" href="#">Projects</a>
+      <a class="nav-item" href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- Resume Preview -->
+  <div id="resume-preview">
+    <button onclick="toggleResume()">&times;</button>
+    <div class="resume-container">
+      <iframe src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" allow="autoplay"></iframe>
+    </div>
   </div>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="content">
+        <div class="profile-wrapper">
+          <div class="glow-ring" id="ledEffect"></div>
+          <svg class="waveform" id="waveform" viewBox="0 0 100 100">
+            <path d="M10,50 Q25,20 40,50 T70,50 T100,50" />
+          </svg>
+          <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+        </div>
+        <h1>Hi, I'm Rivaldi Dwi Putra</h1>
+        <h3>Sales Executive<br />AI Content Creator</h3>
+        <p id="about">
+          I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
+        </p>
+        <div class="cta">
+          <button class="cta-1">Hire Me</button>
+          <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+        </div>
+        <div class="social-icon">
+          <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right"></div>
+  </section>
 
   <!-- Music Player -->
   <div class="music-player">
@@ -151,7 +264,13 @@
     </button>
   </div>
 
+  <!-- Scripts -->
   <script>
+    function toggleResume() {
+      const resume = document.getElementById("resume-preview");
+      resume.style.display = resume.style.display === "block" ? "none" : "block";
+    }
+
     const audio = document.getElementById("audio");
     const playPauseBtn = document.getElementById("playPauseBtn");
     const icon = playPauseBtn.querySelector("i");
@@ -163,21 +282,35 @@
     playPauseBtn.addEventListener("click", () => {
       if (audio.paused) {
         audio.play();
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
+        icon.classList.replace("fa-play", "fa-pause");
         equalizer.style.display = "inline-flex";
         glowRing.style.animationPlayState = "running";
         waveform.style.animationPlayState = "running";
         wavePath.style.animationPlayState = "running";
       } else {
         audio.pause();
-        icon.classList.remove("fa-pause");
-        icon.classList.add("fa-play");
+        icon.classList.replace("fa-pause", "fa-play");
         equalizer.style.display = "none";
         glowRing.style.animationPlayState = "paused";
         waveform.style.animationPlayState = "paused";
         wavePath.style.animationPlayState = "paused";
       }
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const unlockAudio = () => {
+        audio.muted = false;
+        audio.play();
+        icon.classList.replace("fa-play", "fa-pause");
+        equalizer.style.display = "inline-flex";
+        glowRing.style.animationPlayState = "running";
+        waveform.style.animationPlayState = "running";
+        wavePath.style.animationPlayState = "running";
+        document.removeEventListener("click", unlockAudio);
+        document.removeEventListener("scroll", unlockAudio);
+      };
+      document.addEventListener("click", unlockAudio);
+      document.addEventListener("scroll", unlockAudio);
     });
   </script>
 </body>
