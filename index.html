@@ -66,7 +66,7 @@
       }
     }
 
-    /* Futuristic Music Player */
+    /* Music Player */
     .music-player {
       position: fixed;
       bottom: 30px;
@@ -85,10 +85,39 @@
       color: #00bfff;
       font-size: 20px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .music-player button:hover {
       color: #1e90ff;
+    }
+
+    .equalizer {
+      display: inline-flex;
+      gap: 2px;
+      height: 20px;
+      align-items: flex-end;
+    }
+
+    .equalizer span {
+      width: 3px;
+      height: 100%;
+      background: #00bfff;
+      animation: bounce 1s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    .equalizer span:nth-child(1) { animation-delay: 0s; }
+    .equalizer span:nth-child(2) { animation-delay: 0.2s; }
+    .equalizer span:nth-child(3) { animation-delay: 0.4s; }
+    .equalizer span:nth-child(4) { animation-delay: 0.6s; }
+    .equalizer span:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes bounce {
+      0%, 100% { height: 5px; }
+      50% { height: 20px; }
     }
   </style>
 </head>
@@ -118,7 +147,6 @@
   <section id="hero">
     <div class="hero-left">
       <div class="content">
-        <!-- Profile Picture with Glow Ring -->
         <div class="profile-wrapper">
           <div class="glow-ring"></div>
           <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
@@ -152,6 +180,9 @@
     <audio id="audio" src="WeAre (mp3cut.net).mp3" loop></audio>
     <button id="playPauseBtn">
       <i class="fa-solid fa-play"></i>
+      <div class="equalizer" id="equalizer" style="display: none;">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
     </button>
   </div>
 
@@ -165,17 +196,35 @@
     const audio = document.getElementById("audio");
     const playPauseBtn = document.getElementById("playPauseBtn");
     const icon = playPauseBtn.querySelector("i");
+    const equalizer = document.getElementById("equalizer");
 
     playPauseBtn.addEventListener("click", () => {
       if (audio.paused) {
         audio.play();
         icon.classList.remove("fa-play");
         icon.classList.add("fa-pause");
+        equalizer.style.display = "inline-flex";
       } else {
         audio.pause();
         icon.classList.remove("fa-pause");
         icon.classList.add("fa-play");
+        equalizer.style.display = "none";
       }
+    });
+
+    // Autoplay after first interaction
+    window.addEventListener("DOMContentLoaded", () => {
+      const unlockAudio = () => {
+        audio.muted = false;
+        audio.play();
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+        equalizer.style.display = "inline-flex";
+        document.removeEventListener("click", unlockAudio);
+        document.removeEventListener("scroll", unlockAudio);
+      };
+      document.addEventListener("click", unlockAudio);
+      document.addEventListener("scroll", unlockAudio);
     });
   </script>
 </body>
