@@ -1,115 +1,135 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rivaldi Dwi Putra</title>  <!-- Google Fonts -->  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>Rivaldi Dwi Putra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />  <!-- Font Awesome -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />  <!-- Custom Styles -->  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
     html {
       scroll-behavior: smooth;
-    }.profile-wrapper {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  margin-bottom: 30px;
-}
+    }
+    .profile-wrapper {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin-bottom: 30px;
+    }
+    .profile-picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      border: 4px solid #1e90ff;
+    }
+    .glow-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff, #00bfff, #1e90ff);
+      animation: rotate 3s linear infinite;
+      z-index: 1;
+      filter: blur(4px);
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-.profile-picture {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-  border: 4px solid #1e90ff;
-}
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1e1e2f;
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
+      z-index: 999;
+      transition: background 0.3s ease;
+    }
+    .music-player button {
+      background: none;
+      border: none;
+      color: #00bfff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .music-player button:hover {
+      color: #1e90ff;
+    }
+    .equalizer {
+      display: inline-flex;
+      gap: 2px;
+      height: 20px;
+      align-items: flex-end;
+    }
+    .equalizer span {
+      width: 3px;
+      height: 100%;
+      background: #00bfff;
+      animation: bounce 1s infinite ease-in-out;
+      display: inline-block;
+    }
+    .equalizer span:nth-child(1) { animation-delay: 0s; }
+    .equalizer span:nth-child(2) { animation-delay: 0.2s; }
+    .equalizer span:nth-child(3) { animation-delay: 0.4s; }
+    .equalizer span:nth-child(4) { animation-delay: 0.6s; }
+    .equalizer span:nth-child(5) { animation-delay: 0.8s; }
+    @keyframes bounce {
+      0%, 100% { height: 5px; }
+      50% { height: 20px; }
+    }
 
-.glow-ring {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 270px;
-  height: 270px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    #1e90ff,
-    #00bfff,
-    #1e90ff,
-    #00bfff,
-    #1e90ff
-  );
-  animation: rotate 3s linear infinite;
-  z-index: 1;
-  filter: blur(4px);
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Music Player */
-.music-player {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #1e1e2f;
-  padding: 12px;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
-  z-index: 999;
-  transition: background 0.3s ease;
-}
-
-.music-player button {
-  background: none;
-  border: none;
-  color: #00bfff;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.music-player button:hover {
-  color: #1e90ff;
-}
-
-.equalizer {
-  display: inline-flex;
-  gap: 2px;
-  height: 20px;
-  align-items: flex-end;
-}
-
-.equalizer span {
-  width: 3px;
-  height: 100%;
-  background: #00bfff;
-  animation: bounce 1s infinite ease-in-out;
-  display: inline-block;
-}
-
-.equalizer span:nth-child(1) { animation-delay: 0s; }
-.equalizer span:nth-child(2) { animation-delay: 0.2s; }
-.equalizer span:nth-child(3) { animation-delay: 0.4s; }
-.equalizer span:nth-child(4) { animation-delay: 0.6s; }
-.equalizer span:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes bounce {
-  0%, 100% { height: 5px; }
-  50% { height: 20px; }
-}
-
+    /* Resume Preview */
+    #resume-preview {
+      display: none;
+      padding: 20px;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(15, 15, 30, 0.95);
+      backdrop-filter: blur(8px);
+      min-height: 100vh;
+      overflow-y: auto;
+      transition: opacity 0.4s ease;
+    }
+    #resume-preview h2 {
+      color: #00bfff;
+      font-family: 'Inter', sans-serif;
+    }
+    #resume-preview iframe {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    #resume-preview button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
   </style>
-</head><body>
+</head>
+<body>
   <!-- Header Section -->
   <header id="header">
     <div class="left-section">
@@ -121,39 +141,53 @@
       <a class="nav-item" href="#">Projects</a>
       <a class="nav-item" href="#about">About</a>
     </nav>
-  </header>  <!-- Resume Preview -->  <div id="resume-preview" style="display:none; padding: 20px;">
-    <h2>My Resume</h2>
-    <a href="resume.pdf" download class="cta-1" style="margin-bottom: 10px; display: inline-block;">Download Resume</a>
-    <iframe src="rivaldidwiputra.pdf" width="100%" height="600px" style="margin-top: 10px; border: 1px solid #ccc; border-radius: 8px;"></iframe>
-  </div>  <!-- Hero Section -->  <section id="hero">
+  </header>
+
+  <!-- Resume Preview -->
+  <div id="resume-preview">
+    <div style="max-width: 960px; margin: auto; position: relative;">
+      <h2>My Resume</h2>
+      <button onclick="toggleResume()">&times;</button>
+      <iframe 
+        src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" 
+        width="100%" 
+        height="600px" 
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero">
     <div class="hero-left">
       <div class="content">
         <div class="profile-wrapper">
           <div class="glow-ring"></div>
           <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
-        </div><h1>Hi, I'm Rivaldi Dwi Putra</h1>
-    <h3>Sales Executive<br />AI Content Creator</h3>
-    <p id="about">
-      I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
-    </p>
-
-    <div class="cta">
-      <button class="cta-1">Hire Me</button>
-      <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+        </div>
+        <h1>Hi, I'm Rivaldi Dwi Putra</h1>
+        <h3>Sales Executive<br />AI Content Creator</h3>
+        <p id="about">
+          I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
+        </p>
+        <div class="cta">
+          <button class="cta-1">Hire Me</button>
+          <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+        </div>
+        <div class="social-icon">
+          <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
     </div>
+    <div class="hero-right"></div>
+  </section>
 
-    <div class="social-icon">
-      <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-  </div>
-</div>
-<div class="hero-right"></div>
-
-  </section>  <!-- Music Player -->  <div class="music-player">
+  <!-- Music Player -->
+  <div class="music-player">
     <audio id="audio" src="WeAre (mp3cut.net).mp3" loop></audio>
     <button id="playPauseBtn">
       <i class="fa-solid fa-play"></i>
@@ -161,11 +195,28 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
     </button>
-  </div>  <!-- Script -->  <script>
+  </div>
+
+  <!-- Scripts -->
+  <script>
     function toggleResume() {
-      const preview = document.getElementById("resume-preview");
-      preview.style.display = (preview.style.display === "none") ? "block" : "none";
+      const resume = document.getElementById("resume-preview");
+      if (resume.style.display === "none" || resume.style.display === "") {
+        resume.style.display = "block";
+        resume.style.opacity = 0;
+        setTimeout(() => { resume.style.opacity = 1 }, 10);
+      } else {
+        resume.style.opacity = 0;
+        setTimeout(() => { resume.style.display = "none" }, 300);
+      }
     }
+
+    document.addEventListener('contextmenu', function (e) {
+      const preview = document.getElementById("resume-preview");
+      if (preview.style.display === "block") {
+        e.preventDefault();
+      }
+    });
 
     const audio = document.getElementById("audio");
     const playPauseBtn = document.getElementById("playPauseBtn");
@@ -186,7 +237,6 @@
       }
     });
 
-    // Autoplay after first interaction
     window.addEventListener("DOMContentLoaded", () => {
       const unlockAudio = () => {
         audio.muted = false;
@@ -200,5 +250,6 @@
       document.addEventListener("click", unlockAudio);
       document.addEventListener("scroll", unlockAudio);
     });
-  </script></body>
+  </script>
+</body>
 </html>
