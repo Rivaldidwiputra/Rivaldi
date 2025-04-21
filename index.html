@@ -20,13 +20,50 @@
       scroll-behavior: smooth;
     }
 
+    .profile-wrapper {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin-bottom: 30px;
+    }
+
     .profile-picture {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 25px;
-      box-shadow: 0 0 20px rgba(63, 162, 246, 0.5);
+      position: relative;
+      z-index: 2;
+      border: 4px solid #1e90ff;
+    }
+
+    .glow-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #1e90ff,
+        #00bfff,
+        #1e90ff,
+        #00bfff,
+        #1e90ff
+      );
+      animation: rotate 3s linear infinite;
+      z-index: 1;
+      filter: blur(4px);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -56,8 +93,11 @@
   <section id="hero">
     <div class="hero-left">
       <div class="content">
-        <!-- Profile Picture -->
-        <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+        <!-- Profile Picture with Glow Ring -->
+        <div class="profile-wrapper">
+          <div class="glow-ring"></div>
+          <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+        </div>
 
         <h1>Hi, I'm Rivaldi Dwi Putra</h1>
         <h3>Sales Executive<br />AI Content Creator</h3>
