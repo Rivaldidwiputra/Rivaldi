@@ -65,6 +65,31 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Futuristic Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1e1e2f;
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
+      z-index: 999;
+      transition: background 0.3s ease;
+    }
+
+    .music-player button {
+      background: none;
+      border: none;
+      color: #00bfff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .music-player button:hover {
+      color: #1e90ff;
+    }
   </style>
 </head>
 
@@ -122,12 +147,36 @@
     <div class="hero-right"></div>
   </section>
 
+  <!-- Music Player -->
+  <div class="music-player">
+    <audio id="audio" src="your-audio-file.mp3" loop></audio>
+    <button id="playPauseBtn">
+      <i class="fa-solid fa-play"></i>
+    </button>
+  </div>
+
   <!-- Script -->
   <script>
     function toggleResume() {
       const preview = document.getElementById("resume-preview");
       preview.style.display = (preview.style.display === "none") ? "block" : "none";
     }
+
+    const audio = document.getElementById("audio");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const icon = playPauseBtn.querySelector("i");
+
+    playPauseBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+      } else {
+        audio.pause();
+        icon.classList.remove("fa-pause");
+        icon.classList.add("fa-play");
+      }
+    });
   </script>
 </body>
 </html>
