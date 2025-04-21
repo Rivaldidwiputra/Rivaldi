@@ -8,42 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
-
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background-color: #0e0e1a;
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo { font-size: 1.5rem; font-weight: bold; color: #00bfff; text-decoration: none; }
-    nav a {
-      margin: 0 15px;
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    nav a:hover, nav .active { color: #00bfff; }
-
-    /* HERO SECTION */
-    #hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: linear-gradient(to right, #0e0e1a, #1e1e2f);
-      color: white;
-      padding: 40px;
-    }
-    .hero-left .content {
-      max-width: 600px;
+    html {
+      scroll-behavior: smooth;
     }
     .profile-wrapper {
       position: relative;
@@ -67,72 +35,17 @@
       width: 270px;
       height: 270px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff);
+      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff, #00bfff, #1e90ff);
       animation: rotate 3s linear infinite;
       z-index: 1;
       filter: blur(4px);
-      animation-play-state: paused;
     }
     @keyframes rotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    .waveform {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      top: -25px;
-      left: -25px;
-      z-index: 0;
-      opacity: 0.6;
-      animation: waveRotate 8s linear infinite;
-      animation-play-state: paused;
-    }
-
-    .waveform path {
-      fill: none;
-      stroke: #00bfff;
-      stroke-width: 2;
-      stroke-dasharray: 4;
-      animation: dash 1.5s linear infinite;
-      animation-play-state: paused;
-    }
-
-    @keyframes waveRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes dash {
-      to { stroke-dashoffset: -20; }
-    }
-
-    .cta {
-      margin-top: 20px;
-      display: flex;
-      gap: 20px;
-    }
-    .cta-1, .cta-2 {
-      padding: 10px 20px;
-      border: none;
-      background: #00bfff;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .social-icon {
-      margin-top: 20px;
-      font-size: 24px;
-    }
-    .social-icon a {
-      color: #00bfff;
-      margin-right: 15px;
-      text-decoration: none;
-    }
-
-    /* MUSIC PLAYER */
+    /* Music Player */
     .music-player {
       position: fixed;
       bottom: 30px;
@@ -142,6 +55,7 @@
       border-radius: 50%;
       box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
       z-index: 999;
+      transition: background 0.3s ease;
     }
     .music-player button {
       background: none;
@@ -152,6 +66,9 @@
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+    .music-player button:hover {
+      color: #1e90ff;
     }
     .equalizer {
       display: inline-flex;
@@ -164,6 +81,7 @@
       height: 100%;
       background: #00bfff;
       animation: bounce 1s infinite ease-in-out;
+      display: inline-block;
     }
     .equalizer span:nth-child(1) { animation-delay: 0s; }
     .equalizer span:nth-child(2) { animation-delay: 0.2s; }
@@ -175,14 +93,15 @@
       50% { height: 20px; }
     }
 
-    /* RESUME MODAL */
+    /* Resume Preview */
     #resume-preview {
       display: none;
       position: fixed;
       inset: 0;
-      background-color: rgba(10, 10, 20, 0.95);
+      background-color: rgba(10, 10, 20, 0.95); /* background gelap transparan */
       z-index: 1000;
     }
+
     #resume-preview button {
       position: absolute;
       top: 20px;
@@ -194,17 +113,35 @@
       z-index: 1001;
       cursor: pointer;
     }
+
+    .resume-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
     .resume-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      z-index: 1000;
+      position: relative;
+    }
+
+    .no-download-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1001;
+      background-color: transparent; /* Tidak blur, tetap terlihat */
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <a class="logo" href="#">LAVIR</a>
+  <!-- Header Section -->
+  <header id="header">
+    <div class="left-section">
+      <a class="logo" href="#">LAVIR</a>
+    </div>
     <nav>
       <a class="nav-item active" href="#hero">Home</a>
       <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
@@ -217,19 +154,20 @@
   <div id="resume-preview">
     <button onclick="toggleResume()">&times;</button>
     <div class="resume-container">
-      <iframe src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" allow="autoplay"></iframe>
+      <iframe 
+        src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" 
+        allow="autoplay">
+      </iframe>
+      <div class="no-download-overlay"></div>
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section id="hero">
     <div class="hero-left">
       <div class="content">
         <div class="profile-wrapper">
-          <div class="glow-ring" id="ledEffect"></div>
-          <svg class="waveform" id="waveform" viewBox="0 0 100 100">
-            <path d="M10,50 Q25,20 40,50 T70,50 T100,50" />
-          </svg>
+          <div class="glow-ring"></div>
           <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
         </div>
         <h1>Hi, I'm Rivaldi Dwi Putra</h1>
@@ -268,32 +206,39 @@
   <script>
     function toggleResume() {
       const resume = document.getElementById("resume-preview");
-      resume.style.display = resume.style.display === "block" ? "none" : "block";
+      if (resume.style.display === "none" || resume.style.display === "") {
+        resume.style.display = "block";
+        resume.style.opacity = 0;
+        setTimeout(() => { resume.style.opacity = 1 }, 10);
+      } else {
+        resume.style.opacity = 0;
+        setTimeout(() => { resume.style.display = "none" }, 300);
+      }
     }
+
+    document.addEventListener('contextmenu', function (e) {
+      const preview = document.getElementById("resume-preview");
+      if (preview.style.display === "block") {
+        e.preventDefault();
+      }
+    });
 
     const audio = document.getElementById("audio");
     const playPauseBtn = document.getElementById("playPauseBtn");
     const icon = playPauseBtn.querySelector("i");
     const equalizer = document.getElementById("equalizer");
-    const glowRing = document.getElementById("ledEffect");
-    const waveform = document.getElementById("waveform");
-    const wavePath = waveform.querySelector("path");
 
     playPauseBtn.addEventListener("click", () => {
       if (audio.paused) {
         audio.play();
-        icon.classList.replace("fa-play", "fa-pause");
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
         equalizer.style.display = "inline-flex";
-        glowRing.style.animationPlayState = "running";
-        waveform.style.animationPlayState = "running";
-        wavePath.style.animationPlayState = "running";
       } else {
         audio.pause();
-        icon.classList.replace("fa-pause", "fa-play");
+        icon.classList.remove("fa-pause");
+        icon.classList.add("fa-play");
         equalizer.style.display = "none";
-        glowRing.style.animationPlayState = "paused";
-        waveform.style.animationPlayState = "paused";
-        wavePath.style.animationPlayState = "paused";
       }
     });
 
@@ -301,11 +246,9 @@
       const unlockAudio = () => {
         audio.muted = false;
         audio.play();
-        icon.classList.replace("fa-play", "fa-pause");
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
         equalizer.style.display = "inline-flex";
-        glowRing.style.animationPlayState = "running";
-        waveform.style.animationPlayState = "running";
-        wavePath.style.animationPlayState = "running";
         document.removeEventListener("click", unlockAudio);
         document.removeEventListener("scroll", unlockAudio);
       };
