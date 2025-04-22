@@ -13,6 +13,41 @@
     html {
       scroll-behavior: smooth;
     }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a14;
+      color: white;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #0a0a14;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+    nav .nav-item {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+    }
+    nav .nav-item.active {
+      color: #1e90ff;
+    }
+    #hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+      flex-direction: column;
+    }
     .profile-wrapper {
       position: relative;
       width: 250px;
@@ -43,6 +78,67 @@
     @keyframes rotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+    .cta {
+      margin: 20px 0;
+    }
+    .cta a {
+      padding: 12px 24px;
+      margin: 0 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .cta-1 {
+      background-color: #1e90ff;
+      color: white;
+    }
+    .cta-2 {
+      background-color: #00bfff;
+      color: white;
+    }
+    .social-icon a {
+      color: #00bfff;
+      margin: 0 10px;
+      font-size: 20px;
+    }
+
+    /* Resume Preview */
+    #resume-preview {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 20, 0.95);
+      z-index: 1000;
+    }
+    #resume-preview button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      z-index: 1001;
+      cursor: pointer;
+    }
+    .resume-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .resume-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 1000;
+      position: relative;
+    }
+    .no-download-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1001;
+      background-color: transparent;
     }
 
     /* Music Player */
@@ -92,48 +188,6 @@
       0%, 100% { height: 5px; }
       50% { height: 20px; }
     }
-
-    /* Resume Preview */
-    #resume-preview {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background-color: rgba(10, 10, 20, 0.95); /* background gelap transparan */
-      z-index: 1000;
-    }
-
-    #resume-preview button {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      background: none;
-      border: none;
-      z-index: 1001;
-      cursor: pointer;
-    }
-
-    .resume-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .resume-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      z-index: 1000;
-      position: relative;
-    }
-
-    .no-download-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1001;
-      background-color: transparent; /* Tidak blur, tetap terlihat */
-    }
   </style>
 </head>
 <body>
@@ -154,41 +208,35 @@
   <div id="resume-preview">
     <button onclick="toggleResume()">&times;</button>
     <div class="resume-container">
-      <iframe 
-        src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" 
-        allow="autoplay">
-      </iframe>
+      <iframe src="https://drive.google.com/file/d/1a47XgSO4MY4xe8iCG7OdymIZLC08ycZB/preview" allow="autoplay"></iframe>
       <div class="no-download-overlay"></div>
     </div>
   </div>
 
   <!-- Hero Section -->
   <section id="hero">
-    <div class="hero-left">
-      <div class="content">
-        <div class="profile-wrapper">
-          <div class="glow-ring"></div>
-          <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
-        </div>
-        <h1>Hi, I'm Rivaldi Dwi Putra</h1>
-        <h3>Sales Executive<br />AI Content Creator</h3>
-        <p id="about">
-          I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
-        </p>
-        <div class="cta">
-  <a href="mailto:rivaldidwiputrarizal@gmail.com" class="cta-1">Hire Me</a>
-  <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
-</div>
-        <div class="social-icon">
-          <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
+    <div class="content">
+      <div class="profile-wrapper">
+        <div class="glow-ring"></div>
+        <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+      </div>
+      <h1>Hi, I'm Rivaldi Dwi Putra</h1>
+      <h3>Sales Executive<br />AI Content Creator</h3>
+      <p id="about">
+        I’m Rivaldi, Experienced sales executive with a solid background in B2C sales, exhibitions, and customer service. Skilled in CRM, communication, and leadership. Passionate about AI and creating tech content.
+      </p>
+      <div class="cta">
+        <a href="mailto:rivaldidwiputrarizal@gmail.com" class="cta-1">Hire Me</a>
+        <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+      </div>
+      <div class="social-icon">
+        <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
       </div>
     </div>
-    <div class="hero-right"></div>
   </section>
 
   <!-- Music Player -->
