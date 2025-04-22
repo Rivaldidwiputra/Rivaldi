@@ -1,3 +1,4 @@
+/* Reset */
 * {
   padding: 0;
   margin: 0;
@@ -99,43 +100,46 @@ p {
   animation-delay: 0.6s;
 }
 
-/* Button */
-.cta button, .cta .cta-2 {
-  display: inline-block;
-  text-align: center;
-  width: 200px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 15px 0;
-  border-radius: 8px;
-  margin-right: 50px;
+/* CTA Buttons */
+.cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
   margin-bottom: 180px;
-  transition: all 0.15s ease-in-out;
+}
+
+.cta a, .cta button, .cta .cta-2 {
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
   box-shadow: 0 4px 0 #2b6cb0;
+  display: inline-block;
+  width: 200px;
 }
 
 .cta .cta-1 {
-  background-color: #3FA2F6;
-  color: black;
+  background-color: #1e90ff;
+  color: white;
   border: none;
 }
 
 .cta .cta-1:hover {
-  background-color: transparent;
-  color: #3FA2F6;
-  border: 2px solid #3FA2F6;
-  padding: 13px 0;
+  background-color: #00bfff;
 }
 
 .cta .cta-2 {
-  background-color: transparent;
-  color: #3FA2F6;
+  background-color: #00bfff;
+  color: white;
   border: 2px solid #3FA2F6;
 }
 
 .cta .cta-2:hover {
-  background-color: #3FA2F6;
-  color: black;
+  background-color: #1e90ff;
+  color: white;
 }
 
 .cta button:active,
@@ -228,13 +232,13 @@ p {
   }
 }
 
-/* Header animation */
 .nav-item,
 .left-section {
   animation: fadeInTop 1s ease-in forwards;
   opacity: 0;
 }
 
+/* Glow Ring */
 .glow-ring {
   position: absolute;
   top: -15px;
