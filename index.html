@@ -1,309 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rivaldi Dwi Putra</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0a14;
-      color: white;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: #0a0a14;
-    }
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-    }
-    nav .nav-item {
-      margin-left: 20px;
-      color: white;
-      text-decoration: none;
-    }
-    nav .nav-item.active {
-      color: #1e90ff;
-    }
-    #hero {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 20px;
-      text-align: center;
-      flex-direction: column;
-    }
-    .profile-wrapper {
-      position: relative;
-      width: 250px;
-      height: 250px;
-      margin-bottom: 30px;
-    }
-    .profile-picture {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      position: relative;
-      z-index: 2;
-      border: 4px solid #1e90ff;
-    }
-    .glow-ring {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 270px;
-      height: 270px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff, #00bfff, #1e90ff);
-      animation: rotate 3s linear infinite;
-      z-index: 1;
-      filter: blur(4px);
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .cta {
-      margin: 20px 0;
-    }
-    .cta a {
-      padding: 12px 24px;
-      margin: 0 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .cta-1 {
-      background-color: #1e90ff;
-      color: white;
-    }
-    .cta-2 {
-      background-color: #00bfff;
-      color: white;
-    }
-    .social-icon a {
-      color: #00bfff;
-      margin: 0 10px;
-      font-size: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rivaldi Dwi Putra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #0a0a14;
+        color: white;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #0a0a14;
+      }
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+      nav .nav-item {
+        margin-left: 20px;
+        color: white;
+        text-decoration: none;
+      }
+      nav .nav-item.active {
+        color: #1e90ff;
+      }
+      #hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 20px;
+        text-align: center;
+        flex-direction: column;
+      }
+      .profile-wrapper {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
+      }
+      .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+        border: 4px solid #1e90ff;
+      }
+      .glow-ring {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 270px;
+        height: 270px;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg, #1e90ff, #00bfff, #1e90ff, #00bfff, #1e90ff);
+        animation: rotate 3s linear infinite;
+        z-index: 1;
+        filter: blur(4px);
+      }
 
-    /* Resume Preview */
-    #resume-preview {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background-color: rgba(10, 10, 20, 0.95);
-      z-index: 1000;
-    }
-    #resume-preview button {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      background: none;
-      border: none;
-      z-index: 1001;
-      cursor: pointer;
-    }
-    .resume-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .resume-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      z-index: 1000;
-      position: relative;
-    }
-    .no-download-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1001;
-      background-color: transparent;
-    }
+      /* Wave Animation */
+      @keyframes wave {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
 
-    /* Music Player */
-    .music-player {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #1e1e2f;
-      padding: 12px;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
-      z-index: 999;
-      transition: background 0.3s ease;
-    }
-    .music-player button {
-      background: none;
-      border: none;
-      color: #00bfff;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .music-player button:hover {
-      color: #1e90ff;
-    }
-    .equalizer {
-      display: inline-flex;
-      gap: 2px;
-      height: 20px;
-      align-items: flex-end;
-    }
-    .equalizer span {
-      width: 3px;
-      height: 100%;
-      background: #00bfff;
-      animation: bounce 1s infinite ease-in-out;
-      display: inline-block;
-    }
-    .equalizer span:nth-child(1) { animation-delay: 0s; }
-    .equalizer span:nth-child(2) { animation-delay: 0.2s; }
-    .equalizer span:nth-child(3) { animation-delay: 0.4s; }
-    .equalizer span:nth-child(4) { animation-delay: 0.6s; }
-    .equalizer span:nth-child(5) { animation-delay: 0.8s; }
-    @keyframes bounce {
-      0%, 100% { height: 5px; }
-      50% { height: 20px; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header Section -->
-  <header id="header">
-    <div class="left-section">
-      <a class="logo" href="#">LAVIR</a>
-    </div>
-    <nav>
-      <a class="nav-item active" href="#hero">Home</a>
-      <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
-      <a class="nav-item" href="#">Projects</a>
-      <a class="nav-item" href="#about">About</a>
-    </nav>
-  </header>
+      /* Animation when audio is playing */
+      .glow-ring.animate-wave {
+        animation: wave 1s ease-in-out infinite;
+      }
 
-  <!-- Resume Preview -->
-  <div id="resume-preview">
-    <button onclick="toggleResume()">&times;</button>
-    <div class="resume-container">
-      <iframe src="https://drive.google.com/file/d/1bpf1EMoZOoIjnqjj01cVrKS0ACh_T00H/preview" allow="autoplay"></iframe>
-      <div class="no-download-overlay"></div>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <!-- Bagian HERO diubah agar text tetap rata kiri -->
-<section id="hero">
-  <div class="content" style="text-align: left; max-width: 800px; margin: 0 auto;">
-    <div class="profile-wrapper" style="margin-bottom: 30px;">
-      <div class="glow-ring"></div>
-      <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
-    </div>
-    <h1 style="margin: 0;">Hi, I'm Rivaldi Dwi Putra</h1>
-    <h3>Sales <br />Event Strategy Manager</h3>
-    <p id="about">
-      I’m Rivaldi, Dynamic and results-driven Sales and Event Specialist with over 5 years of experience across retail, technology, and real estate industries. Proven expertise in customer relationship management, event coordination, and sales strategy execution. Skilled in building strong client relationships, delivering technical consultations, and optimizing customer satisfaction. Proficient in Microsoft Office, CRM tools, and data analysis. Adept at leading teams, driving revenue growth, and managing exhibitions from planning to execution. Passionate about leveraging technology and Al to enhance business outcomes..
-    </p>
-    <div class="cta" style="margin: 20px 0;">
-      <a href="mailto:rivaldidwiputrarizal@gmail.com" class="cta-1">Hire Me</a>
-      <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
-    </div>
-    <div class="social-icon" style="margin-top: 20px;">
-      <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-  </div>
-</section>
-
-  <!-- Music Player -->
-  <div class="music-player">
-    <audio id="audio" src="WeAre (mp3cut.net).mp3" loop></audio>
-    <button id="playPauseBtn">
-      <i class="fa-solid fa-play"></i>
-      <div class="equalizer" id="equalizer" style="display: none;">
-        <span></span><span></span><span></span><span></span><span></span>
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .cta {
+        margin: 20px 0;
+      }
+      .cta a {
+        padding: 12px 24px;
+        margin: 0 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .cta-1 {
+        background-color: #1e90ff;
+        color: white;
+      }
+      .cta-2 {
+        background-color: #00bfff;
+        color: white;
+      }
+      .social-icon a {
+        color: #00bfff;
+        margin: 0 10px;
+        font-size: 20px;
+      }
+      /* Resume Preview */
+      #resume-preview {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(10, 10, 20, 0.95);
+        z-index: 1000;
+      }
+      #resume-preview button {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: white;
+        background: none;
+        border: none;
+        z-index: 1001;
+        cursor: pointer;
+      }
+      .resume-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .resume-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        z-index: 1000;
+        position: relative;
+      }
+      .no-download-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1001;
+        background-color: transparent;
+      }
+      /* Music Player */
+      .music-player {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #1e1e2f;
+        padding: 12px;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
+        z-index: 999;
+        transition: background 0.3s ease;
+      }
+      .music-player button {
+        background: none;
+        border: none;
+        color: #00bfff;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .music-player button:hover {
+        color: #1e90ff;
+      }
+      .equalizer {
+        display: inline-flex;
+        gap: 2px;
+        height: 20px;
+        align-items: flex-end;
+      }
+      .equalizer span {
+        width: 3px;
+        height: 100%;
+        background: #00bfff;
+        animation: bounce 1s infinite ease-in-out;
+        display: inline-block;
+      }
+      .equalizer span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .equalizer span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .equalizer span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .equalizer span:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .equalizer span:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          height: 5px;
+        }
+        50% {
+          height: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header id="header">
+      <div class="left-section">
+        <a class="logo" href="#">LAVIR</a>
       </div>
-    </button>
-  </div>
+      <nav>
+        <a class="nav-item active" href="#hero">Home</a>
+        <a class="nav-item" href="#" onclick="toggleResume()">Resume</a>
+        <a class="nav-item" href="#">Projects</a>
+        <a class="nav-item" href="#about">About</a>
+      </nav>
+    </header>
 
-  <!-- Scripts -->
-  <script>
-    function toggleResume() {
-      const resume = document.getElementById("resume-preview");
-      if (resume.style.display === "none" || resume.style.display === "") {
-        resume.style.display = "block";
-        resume.style.opacity = 0;
-        setTimeout(() => { resume.style.opacity = 1 }, 10);
-      } else {
-        resume.style.opacity = 0;
-        setTimeout(() => { resume.style.display = "none" }, 300);
+    <!-- Resume Preview -->
+    <div id="resume-preview">
+      <button onclick="toggleResume()">&times;</button>
+      <div class="resume-container">
+        <iframe src="https://drive.google.com/file/d/1bpf1EMoZOoIjnqjj01cVrKS0ACh_T00H/preview" allow="autoplay"></iframe>
+        <div class="no-download-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="content" style="text-align: left; max-width: 800px; margin: 0 auto;">
+        <div class="profile-wrapper" style="margin-bottom: 30px;">
+          <div class="glow-ring"></div>
+          <img src="Profilepict.jpg" alt="Profile Picture" class="profile-picture" />
+        </div>
+        <h1 style="margin: 0;">Hi, I'm Rivaldi Dwi Putra</h1>
+        <h3>Sales <br />Event Strategy Manager</h3>
+        <p id="about">
+          I’m Rivaldi, Dynamic and results-driven Sales and Event Specialist with over 5 years of experience across retail, technology, and real estate industries. Proven expertise in customer relationship management, event coordination, and sales strategy execution. Skilled in building strong client relationships, delivering technical consultations, and optimizing customer satisfaction. Proficient in Microsoft Office, CRM tools, and data analysis. Adept at leading teams, driving revenue growth, and managing exhibitions from planning to execution. Passionate about leveraging technology and Al to enhance business outcomes..
+        </p>
+        <div class="cta" style="margin: 20px 0;">
+          <a href="mailto:rivaldidwiputrarizal@gmail.com" class="cta-1">Hire Me</a>
+          <a href="https://wa.me/6281387116201" class="cta-2" target="_blank">Contact Me</a>
+        </div>
+        <div class="social-icon" style="margin-top: 20px;">
+          <a href="https://instagram.com/rivalyschan" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/rivaldidwiputra" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/USERNAME" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@USERNAME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/@USERNAME" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Player -->
+    <div class="music-player">
+      <audio id="audio" src="WeAre (mp3cut.net).mp3" loop></audio>
+      <button id="playPauseBtn">
+        <i class="fa-solid fa-play"></i>
+        <div class="equalizer" id="equalizer" style="display: none;">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      function toggleResume() {
+        const resume = document.getElementById("resume-preview");
+        if (resume.style.display === "none" || resume.style.display === "") {
+          resume.style.display = "block";
+          resume.style.opacity = 0;
+          setTimeout(() => {
+            resume.style.opacity = 1;
+          }, 10);
+        } else {
+          resume.style.opacity = 0;
+          setTimeout(() => {
+            resume.style.display = "none";
+          }, 300);
+        }
       }
-    }
 
-    document.addEventListener('contextmenu', function (e) {
-      const preview = document.getElementById("resume-preview");
-      if (preview.style.display === "block") {
-        e.preventDefault();
-      }
-    });
+      document.addEventListener("contextmenu", function (e) {
+        const preview = document.getElementById("resume-preview");
+        if (preview.style.display === "block") {
+          e.preventDefault();
+        }
+      });
 
-    const audio = document.getElementById("audio");
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const icon = playPauseBtn.querySelector("i");
-    const equalizer = document.getElementById("equalizer");
+      const audio = document.getElementById("audio");
+      const playPauseBtn = document.getElementById("playPauseBtn");
+      const icon = playPauseBtn.querySelector("i");
+      const equalizer = document.getElementById("equalizer");
+      const glowRing = document.querySelector(".glow-ring"); // Select the glow ring element
 
-    playPauseBtn.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-        equalizer.style.display = "inline-flex";
-      } else {
-        audio.pause();
-        icon.classList.remove("fa-pause");
-        icon.classList.add("fa-play");
-        equalizer.style.display = "none";
-      }
-    });
+      playPauseBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          icon.classList.remove("fa-play");
+          icon.classList.add("fa-pause");
+          equalizer.style.display = "inline-flex";
+          glowRing.classList.add("animate-wave"); // Add the wave animation
+        } else {
+          audio.pause();
+          icon.classList.remove("fa-pause");
+          icon.classList.add("fa-play");
+          equalizer.style.display = "none";
+          glowRing.classList.remove("animate-wave"); // Remove the wave animation
+        }
+      });
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const unlockAudio = () => {
-        audio.muted = false;
-        audio.play();
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-        equalizer.style.display = "inline-flex";
-        document.removeEventListener("click", unlockAudio);
-        document.removeEventListener("scroll", unlockAudio);
-      };
-      document.addEventListener("click", unlockAudio);
-      document.addEventListener("scroll", unlockAudio);
-    });
-  </script>
-</body>
+      window.addEventListener("DOMContentLoaded", () => {
+        const unlockAudio = () => {
+          audio.muted = false;
+          audio.play();
+          icon.classList.remove("fa-play");
+          icon.classList.add("fa-pause");
+          equalizer.style.display = "inline-flex";
+          glowRing.classList.add("animate-wave");
+          document.removeEventListener("click", unlockAudio);
+          document.removeEventListener("scroll", unlockAudio);
+        };
+        document.addEventListener("click", unlockAudio);
+        document.addEventListener("scroll", unlockAudio);
+      });
+    </script>
+  </body>
 </html>
